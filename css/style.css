@@ -1,3 +1,37 @@
 body {
   background: yellow;
 }
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  display: table-cell;
+  padding: 0px;
+  margin: 0px;
+}
+
+ul li {
+  list-style: none;
+  border: 1px solid black;
+}
+
+#board {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  border-spacing: 0px;
+}
+
+#board tr th {
+  border: 1px solid black;
+}
+
+/* #board tr th:hover {
+  background-color: grey;
+} */
+
+.changeColor {
+  background-color: red;
+}
