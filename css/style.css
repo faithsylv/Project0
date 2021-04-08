@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap');
+
+
 body {
-  background: yellow;
+  background: AntiqueWhite;
+  font-family: 'Cinzel', serif;
+  font-weight: 500;
+  color: brown;
+}
+
+#container {
+  margin-top: 100px;
 }
 
 h1 {
@@ -22,16 +32,131 @@ ul li {
   height: 400px;
   margin: 0 auto;
   border-spacing: 0px;
+  display: inline-table;
+  margin-left: 32%;
+  vertical-align: top;
 }
 
 #board tr th {
   border: 1px solid black;
+  width: 33%;
+  height: 33%;
+  font-size: 50px;
 }
 
-/* #board tr th:hover {
-  background-color: grey;
+
+#board tr th:hover {
+  background-color: #a52a2a35;
+}
+
+#scoreboard {
+  display: inline-table;
+  margin-left: 50px;
+  vertical-align: top;
+  text-align: left;
+
+}
+
+#scoreboard span {
+  float: right;
+  padding: 10px;
+}
+
+#symbol-picker {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#show-player-symbols {
+  text-align: center;
+  margin: 0 auto;
+  width: 100px;
+}
+
+#show-player-symbols p {
+  text-align: left;
+}
+
+#player1-symbol-display, #player2-symbol-display {
+  float: right;
+}
+
+/* #player2-symbol-display {
+  float: right;
 } */
 
-.changeColor {
-  background-color: red;
+button {
+  width: 75px;
+  height: 30px;
+  font-family: 'Cinzel', serif;
+}
+
+.invisible {
+  display: none;
+}
+
+.cats-game-over {
+  display: inline;
+  color: white;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  top: 35%;
+  margin-top: -150px;
+  z-index: 16;
+  background-color: green;
+  background-repeat: no-repeat;
+  width: 300px;
+  height:300px;
+  line-height: 300px;
+  text-align: center;
+  color: red;
+}
+
+
+.banner-over {
+  display: inline;
+  color: white;
+  position: absolute;
+  left: 50%;
+  margin-left: -115px;
+  top: 35%;
+  margin-top: -150px;
+  z-index: 15;
+  background-image: url("../images/flag.gif");
+  background-position: 5px 50px;
+  background-repeat: no-repeat;
+  width: 300px;
+  height:300px;
+  line-height: 300px;
+  text-align: center;
+}
+
+.banner-over p {
+  margin-left: -37px
+
+}
+
+#winner-banner {
+  font-size: 14px;
+}
+
+#play-again {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#play-again button {
+  width: 100px;
+  height: 50px;
+}
+
+#cursor-symbol {
+  position: absolute;
+  left: 48%;
+  right: 52%;
+  top: 44%;
+  bottom: 56%;
+  font-size: 50px;
+  margin: 5px;
 }
