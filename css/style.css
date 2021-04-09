@@ -28,7 +28,7 @@ body::after {
 
 /* container holds all elements - styling here provides set width and centers everything inside */
 #container {
-  width: 951px;
+  width: 1051px;
   margin: 100px auto 0 auto;
   text-align: center;
 }
@@ -70,13 +70,13 @@ h1 {
   transition: 1.5s all;
 }
 
-/* class for the symbol square and scoreboard on each side  */
+/* class for the boards to each side of main table - symbol and scoreboard  */
 .board-style {
   font-size: 25px;
   display: inline-block;
   width: 200px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 45px;
+  margin-right: 45px;
   background-color: #f44336eb;
   vertical-align: middle;
   border: 3px solid turquoise;
@@ -84,14 +84,26 @@ h1 {
   padding-right: 10px;
 }
 
+/* center tables within the div square for each of the boards the left and right of the main table */
 .board-style table {
   margin: 0 auto;
 }
 
+/* set height of each cell in the tables for the boards to the left and right of the main table to make room for the size of the text / emojis put in by javascript */
 #scoreboard td {
   height: 73px;
 }
 
+#show-player-symbols td {
+  height: 73px;
+}
+
+/* set the width specifically for the cells in the second column of each side table to make room for the text / emojis put in by javascript - prevents column 1 from being re-configured once something goes into the cells in column 2*/
+.jsinput-display {
+  width: 50px;
+}
+
+/* styling for the titles in the boards to the left and right of the main table*/
 .board-title {
   margin: 20px 5px 5px 5px;
   font-size: 28px;
@@ -99,49 +111,42 @@ h1 {
   text-decoration: underline;
 }
 
-.jsinput-display {
-  width: 50px;
-}
-
-#show-player-symbols td {
-  height: 73px;
-}
-
+/* set font size for the emojis that show each player's symbol in the symbol side board */
 #player1-symbol-display, #player2-symbol-display {
   font-size: 50px;
 }
 
+/* styling for the first banner that pops up which prompts you to pick a symbol and shows instructions*/
 #symbol-picker {
   position: absolute;
   text-align: center;
   height: 233px;
-  width: 500px;
+  width: 490px;
   top: 38%;
   left: 50%;
-  margin-left: -250px;
+  margin-left: -245px;
   background-color: #5e37fbd9;
   border-radius: 10px;
 }
 
+/* specific styling for the instructions text - different font and size*/
 #instructions {
-  /* font-style: italic; */
   font-size: 15px;
   font-family: 'Nunito', sans-serif;;
 }
 
-button {
+/* styling for the buttons to choose your symbol  */
+#x-button, #o-button{
   width: 75px;
   height: 65px;
   font-family: 'Cinzel', serif;
-}
-
-#x-button, #o-button {
   font-size: 50px;
   border: none;
   border-radius: 50px;
   background-color: none;
 }
 
+/* change the background color of the buttons to choose symbol on hover */
 #x-button:hover {
   background-color: #ff4082c7;
 }
@@ -150,10 +155,13 @@ button {
   background-color: #ff4082c7;
 }
 
+
+/* class to make different elements invisible when assigned in JS */
 .invisible {
   display: none;
 }
 
+/* styling for the banner that shows in the event of a draw */
 .cats-game-over {
   display: block;
   background-color: #ce1fec;
@@ -169,7 +177,7 @@ button {
   font-size: 30px;
 }
 
-
+/* styling for the banner that shows in the event of a win */
 .banner-over {
   display: block;
   color: white;
@@ -183,8 +191,10 @@ button {
   height:206px;
   line-height: 300px;
   text-align: center;
+  transition-delay: 4s;
 }
 
+/* styling for the text in the win banner that announces which player won */
 .banner-over p {
   font-size: 30px;
   font-style: arial;
@@ -193,17 +203,18 @@ button {
    -webkit-text-stroke: 2.5px #f83278;
 }
 
-
+/* styling for the div that holds the win banner */
 #winner-banner {
-  font-size: 14px;
   border-radius: 20px;
 }
 
+/* styling for the div that holds the play again button */
 #play-again {
   text-align: center;
   margin: 0 auto;
 }
 
+/* styling for the  play again button itself*/
 #play-again button {
   width: 245px;
   height: 50px;
@@ -214,6 +225,7 @@ button {
   background-color: #ffeb3b;
 }
 
+/* styling for the symbol that follows the cursor during game play */
 #cursor-symbol {
   position: absolute;
   left: 48%;
@@ -224,6 +236,7 @@ button {
   margin: 5px;
 }
 
+/* code for play again button animation */
 .cssload-loader {
 	width: 244px;
 	height: 49px;

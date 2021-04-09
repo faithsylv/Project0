@@ -1,41 +1,60 @@
-# Tic Tac Toe
-## subheading
-### sub sub heading
+# Project0: Cats and Dogs (Tic Tac Toe)
+
+Dogs and Cats is a simple tic-tac-toe game that follows the standard rules of play.
+
+*Created by Faith Sylvia - General Assembly Class Project.*
+
+![Game Screenshot](images/game-screenshot.png)
+
+## Demo
+Click [here](https://faithsylvia1.github.io/Project0/) to test on the demo site.
+
+## Technology Used
+
+- HTML
+- CSS
+- JavaScript
+- jQuery
 
 
-First paragraph
+## Rules
 
-Second paragraph
+- The game is played on a 3 x 3 game board.
+- Players select their spirit animal as their token during game play
+- The first player to get 3 of their tokens in a row (either down, across, or diagonally) wins the game.
+- If the board fills and there is no winner, it is a draw, or "Cat's Game," and the game is over.
 
-Third paragraph
+## Key Features
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. Selection of token by button
+1. Automatic assignment of token for other player based on Player 1 Selection
+1. Current symbol follows cursor - serves as a mechanism of confirming whose turn it is
+1. Buttons and individual cells change color on hover - cell hover has a short transition applied to the change of color
+1. Animation on play again button
+1. Ability to detect a draw as well as a win where the final empty cell calls the win - reference code for a draw is below. Note the second if statement tests if the game is over, which prevents this code from running if there is a winner but the board is also full (last click win):
 
-## Emphasis
+```JavaScript
+for ( let i = 1; i <= 9; i ++ ) {
+  if ( $( `#${ i }` ).text() === '') {
+    boardHasRemainingSpaces = true;
+  }
+}
 
-we can have *italic* text or you can have **bold** or ***bold italic***. ___Underlines___ work the same.
+if (boardHasRemainingSpaces === false && gameOver === false) {
 
-Does this  _
-
-* Groucho
-- Harpo
-* Chico
-
-1. hi
-2. how
-3. labore
-
-![Bill Murray](http://www.fillmurray.com/500/400)
-
-## code
-
-In jQuery we often use the `$` and the `document` object is less useful. Make variable / function names and references to specific code in this. `console.log`. if longer than function or variable name, wrap in backticks:
-
-```javascript
-const hello = function () {
-  console.log('hello world');
+  gameOver = true;
+  $(' #cats-game' ).removeClass( 'invisible' );
+  $( '#cats-game' ).addClass(' cats-game-over' );
+  $( '#play-again' ).removeClass( 'invisible' );
+  gameOver = true;
+  $( '.play-again' ).on( 'click' , clearBoard );
+  $( '#cursor-symbol' ).addClass( 'invisible' );
 }
 
 ```
+## Future Developments
 
- click [here](https://faithsylvia1.github.io/Project0/) to play tic tac toe:
+- Vertically align center of side boards to center of main play board
+- Make key if-else statement in checkWinner DRYer / simpler
+- Allow input of player names instead of using "Player 1" and "Player 2"
+- Use of images as tokens instead of text / emojis
