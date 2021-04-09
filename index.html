@@ -1,79 +1,111 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tic Tac Toe</title>
+
+  <title>Cats and Dogs</title>
+
   <link rel="stylesheet" href="css/style.css">
   <script src="js/jquery.js"></script>
   <script src="js/tictactoe.js"></script>
-</head>
-<body>
-  <div id=container>
-    <h1>Naughts and Crosses</h1>
 
+</head>
+
+<body>
+
+  <div id=container>
+
+    <h1>Cats and Dogs</h1>
+
+    <!-- div for a square with title and table showing which token / symbol players have chosen -->
+    <div id = 'player-symbol-board' class = 'board-style'>
+
+      <h2 class = 'board-title'>Tokens</h2>
+
+      <table id = 'show-player-symbols'>
+        <tr>
+          <td>Player 1:</td>
+          <td id ='player1-symbol-display' class = 'jsinput-display'></td>
+        </tr>
+        <tr>
+          <td>Player 2:</td>
+          <td id ='player2-symbol-display' class = 'jsinput-display'></td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!-- main table to play game -->
     <table id="board">
       <tr>
-        <th id="1"></th>
-        <th id="2"></th>
-        <th id="3"></th>
+        <td id="1"></td>
+        <td id="2"></td>
+        <td id="3"></td>
       </tr>
       <tr class="row2">
-        <th id="4"></th>
-        <th id="5"></th>
-        <th id="6"></th>
+        <td id="4"></td>
+        <td id="5"></td>
+        <td id="6"></td>
       </tr>
       <tr class="row3">
-        <th id="7"></th>
-        <th id="8"></th>
-        <th id="9"></th>
+        <td id="7"></td>>
+        <td id="8"></td>
+        <td id="9"></td>
       </tr>
     </table>
 
-    <div id = 'scoreboard'>
+<!-- div for a square with title and table showing the score for each player -->
+    <div id = 'scoreboard' class = 'board-style'>
+      <h2 class = 'board-title'>Scoreboard</h2>
       <table>
         <tr>
-          <th>Player 1 Score:</th>
-          <th id = 'player1-score'>0</th>
+          <td>Player 1:</td>
+          <td id = 'player1-score' class = 'jsinput-display'>0</td>
         </tr>
         <tr>
-          <th>Player 2 Score:</th>
-          <th id = 'player2-score'>0</th>
+          <td>Player 2:</td>
+          <td id = 'player2-score' class = 'jsinput-display'>0</td>
         </tr>
       </table>
     </div>
 
+    <!-- position absolute banner allowing user to pick their symbol / token and providing instructions for game - shows only at start of game across center of page  -->
     <div id='symbol-picker'>
 
-      <h3>Pick your Symbol</h3>
+      <h3>Player 1, please pick your spirit animal.</h3>
 
-      <button id='x-button'>X</button>
-      <button id='o-button'>O</button>
+      <button id='x-button'>😾</button>
+      <button id='o-button'>🐶</button>
 
-    </div>
-
-    <div id = 'show-player-symbols'>
-
-      <p>Player 1:<span id ='player1-symbol-display'></span></p>
-
-      <p>Player 2:<Span id ='player2-symbol-display'></Span></p>
+      <h4 id = 'instructions'>Player 2's symbol will default to the other option. <br>Don't worry, if you know how to play tic-tac-toe, then you know how to play Cats and Dogs...</h4>
 
     </div>
 
+    <!-- position absolute banner that appears if there is a winner - shows only at once a winner is called  -->
     <div id = "winner-banner" class = "invisible">
-      <p>The Winner is <span class = 'name-winner'></span></p>
+      <p><span class = 'name-winner'></span> won!</p>
     </div>
 
+    <!-- position absolute banner that appears if there is a draw - shows only once the draw is discovered  -->
     <div id = "cats-game" class = "invisible">
-      <p>It's a Cat's Game!</p>
+      <p>Oh dear, it's a Cat's Game!</p>
     </div>
 
+    <!-- position absolute div with button that appears at the end of a game (whether a winner or a draw) - shows only once game ends  -->
     <div id = 'play-again' class = 'invisible'>
-      <button class = 'play-again'>Play Again!</button>
+      <button class = 'play-again cssload-loader'>Play Again!</button>
     </div>
 
-    <p id = 'cursor-symbol' class = 'invisible'>X</p>
+    <!-- element to hold the current symbol which follows the cursor - text switches with each player -->
+    <p id = 'cursor-symbol' class = 'invisible'></p>
+
+    <!-- end of container div  -->
   </div>
+
 </body>
+
 </html>

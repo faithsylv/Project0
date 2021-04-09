@@ -1,94 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 body {
-  background: AntiqueWhite;
-  font-family: 'Cinzel', serif;
+  font-family: 'Fugaz One', cursive;
   font-weight: 500;
-  color: brown;
+  color: white;
 }
 
+/* Styling to make the background image transparent */
+body::after {
+  background: url(../images/couch-background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  content: "";
+  opacity: 0.6;
+  position: absolute;
+  background-repeat: no-repeat;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* container holds all elements - styling here provides set width and centers everything inside */
 #container {
-  margin-top: 100px;
-}
-
-h1 {
+  width: 951px;
+  margin: 100px auto 0 auto;
   text-align: center;
 }
 
-ul {
-  display: table-cell;
-  padding: 0px;
-  margin: 0px;
+/* website heading style */
+h1 {
+  text-align: center;
+  color: #f93276;
+  font-size: 50px;
+  -webkit-text-stroke: 0.5px #9e0c3f;
 }
 
-ul li {
-  list-style: none;
-  border: 1px solid black;
-}
-
+/* styling for main playing board */
 #board {
   width: 400px;
   height: 400px;
   margin: 0 auto;
   border-spacing: 0px;
-  display: inline-table;
-  margin-left: 32%;
   vertical-align: top;
+  right: 20vw;
+  background-color: #59e64ae6;
+  display: inline-table;
+  border-radius: 50px;
+  border-collapse: collapse;
+  border-style: hidden;
 }
 
-#board tr th {
-  border: 1px solid black;
+/* styling for each cell in the board as well as text within*/
+#board tr td {
+  border: 3px solid #2517f3;
   width: 33%;
   height: 33%;
   font-size: 50px;
 }
 
-
-#board tr th:hover {
-  background-color: #a52a2a35;
+/* when hovering over a cell, highlight it with short transition */
+#board tr td:hover {
+  background-color: #ffeb3bfa;
+  transition: 1.5s all;
 }
 
-#scoreboard {
-  display: inline-table;
-  margin-left: 50px;
-  vertical-align: top;
-  text-align: left;
-
+/* class for the symbol square and scoreboard on each side  */
+.board-style {
+  font-size: 25px;
+  display: inline-block;
+  width: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #f44336eb;
+  vertical-align: middle;
+  border: 3px solid turquoise;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-#scoreboard span {
-  float: right;
-  padding: 10px;
-}
-
-#symbol-picker {
-  text-align: center;
+.board-style table {
   margin: 0 auto;
 }
 
-#show-player-symbols {
-  text-align: center;
-  margin: 0 auto;
-  width: 100px;
+#scoreboard td {
+  height: 73px;
 }
 
-#show-player-symbols p {
-  text-align: left;
+.board-title {
+  margin: 20px 5px 5px 5px;
+  font-size: 28px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.jsinput-display {
+  width: 50px;
+}
+
+#show-player-symbols td {
+  height: 73px;
 }
 
 #player1-symbol-display, #player2-symbol-display {
-  float: right;
+  font-size: 50px;
 }
 
-/* #player2-symbol-display {
-  float: right;
-} */
+#symbol-picker {
+  position: absolute;
+  text-align: center;
+  height: 233px;
+  width: 500px;
+  top: 38%;
+  left: 50%;
+  margin-left: -250px;
+  background-color: #5e37fbd9;
+  border-radius: 10px;
+}
+
+#instructions {
+  /* font-style: italic; */
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;;
+}
 
 button {
   width: 75px;
-  height: 30px;
+  height: 65px;
   font-family: 'Cinzel', serif;
+}
+
+#x-button, #o-button {
+  font-size: 50px;
+  border: none;
+  border-radius: 50px;
+  background-color: none;
+}
+
+#x-button:hover {
+  background-color: #ff4082c7;
+}
+
+#o-button:hover {
+  background-color: #ff4082c7;
 }
 
 .invisible {
@@ -96,49 +155,48 @@ button {
 }
 
 .cats-game-over {
-  display: inline;
+  display: block;
+  background-color: #ce1fec;
+  border: 3px solid #f5bcff;
   color: white;
   position: absolute;
   left: 50%;
-  margin-left: -150px;
-  top: 35%;
-  margin-top: -150px;
-  z-index: 16;
-  background-color: green;
-  background-repeat: no-repeat;
-  width: 300px;
-  height:300px;
-  line-height: 300px;
+  margin-left: -238.50px;
+  top: 46%;
+  width: 477px;
+  border-radius: 20px;
   text-align: center;
-  color: red;
+  font-size: 30px;
 }
 
 
 .banner-over {
-  display: inline;
+  display: block;
   color: white;
   position: absolute;
   left: 50%;
-  margin-left: -115px;
-  top: 35%;
-  margin-top: -150px;
-  z-index: 15;
-  background-image: url("../images/flag.gif");
-  background-position: 5px 50px;
+  margin-left: -238.50px;
+  top: 32%;
+  background-image: url("../images/winning-banner.gif");
   background-repeat: no-repeat;
-  width: 300px;
-  height:300px;
+  width: 477px;
+  height:206px;
   line-height: 300px;
   text-align: center;
 }
 
 .banner-over p {
-  margin-left: -37px
-
+  font-size: 30px;
+  font-style: arial;
+  color: #f4bcff;
+  text-align: center;
+   -webkit-text-stroke: 2.5px #f83278;
 }
+
 
 #winner-banner {
   font-size: 14px;
+  border-radius: 20px;
 }
 
 #play-again {
@@ -147,8 +205,13 @@ button {
 }
 
 #play-again button {
-  width: 100px;
+  width: 245px;
   height: 50px;
+  position: absolute;
+  text-align: center;
+  top: 71%;
+  right: 44%;
+  background-color: #ffeb3b;
 }
 
 #cursor-symbol {
@@ -159,4 +222,52 @@ button {
   bottom: 56%;
   font-size: 50px;
   margin: 5px;
+}
+
+.cssload-loader {
+	width: 244px;
+	height: 49px;
+	line-height: 49px;
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: helvetica, arial, sans-serif;
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size:18px;
+	color: #f93276;
+	letter-spacing: 0.2em;
+}
+.cssload-loader::before, .cssload-loader::after {
+	content: "";
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: #f93276;
+	position: absolute;
+	animation: cssload-load 0.81s infinite alternate ease-in-out;
+}
+.cssload-loader::before {
+	top: 0;
+}
+.cssload-loader::after {
+	bottom: 0;
+}
+
+@keyframes cssload-load {
+	0% {
+		left: 0;
+		height: 29px;
+		width: 15px;
+	}
+	50% {
+		height: 8px;
+		width: 39px;
+	}
+	100% {
+		left: 229px;
+		height: 29px;
+		width: 15px;
+	}
 }

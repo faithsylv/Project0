@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$( document ).ready( function () {
 
 //create global variables
 
@@ -23,10 +23,10 @@ $(document).ready(function () {
 
     currentPlayerSymbol = player1Symbol; //player 1 always starts the first game.
 
-    if (player1Symbol === 'X') { //assign symbol for player 2 based on player 1 choice
-      player2Symbol = 'O';
+    if (player1Symbol === '😾') { //assign symbol for player 2 based on player 1 choice
+      player2Symbol = '🐶';
     } else {
-      player2Symbol = 'X';
+      player2Symbol = '😾';
     }
 
     //set display of which player chose which symbol at bottom of screen
@@ -51,30 +51,32 @@ $(document).ready(function () {
   }
 
   //function to switch between players after each click. Called in main playGame function every time that a table cell is clicked.
-  const switchPlayer = function (){
+  const switchPlayer = function () {
 
-    if(currentPlayerSymbol === 'X') { //change the current player symbol
-      currentPlayerSymbol = 'O';
-      $('#cursor-symbol').text('O'); // change the symbol that follows the cursor to the new symbol
-    } else if (currentPlayerSymbol === 'O'){
-      currentPlayerSymbol = 'X';
-      $('#cursor-symbol').text('X');
+    if(currentPlayerSymbol === player1Symbol) { //change the current player symbol
+      currentPlayerSymbol = player2Symbol;
+      $('#cursor-symbol').text(player2Symbol); // change the symbol that follows the cursor to the new symbol
+    } else if (currentPlayerSymbol === player2Symbol){
+      currentPlayerSymbol = player1Symbol;
+      $('#cursor-symbol').text(player1Symbol);
     }
   }
 
   //function to check if there is a winner. Called in main playGame function every time that a table cell is clicked.
   const checkWinner = function () {
 
-    const cell1Text = $('#1').text();
-    const cell2Text = $('#2').text();
-    const cell3Text = $('#3').text();
-    const cell4Text = $('#4').text();
-    const cell5Text = $('#5').text();
-    const cell6Text = $('#6').text();
-    const cell7Text = $('#7').text();
-    const cell8Text = $('#8').text();
-    const cell9Text = $('#9').text();
+    //get the contents of each cell from the DOM for comparison
+    const cell1Text = $(' #1 ').text();
+    const cell2Text = $(' #2 ').text();
+    const cell3Text = $(' #3 ').text();
+    const cell4Text = $(' #4 ').text();
+    const cell5Text = $(' #5 ').text();
+    const cell6Text = $(' #6 ').text();
+    const cell7Text = $(' #7' ).text();
+    const cell8Text = $(' #8 ').text();
+    const cell9Text = $(' #9 ').text();
 
+    //if else statements to compare all potential 3-in-a-row combos for a winner
     if (cell1Text === cell2Text && cell1Text === cell3Text && cell1Text !== ''){
 
       ifWinnerCalls();
@@ -109,23 +111,27 @@ $(document).ready(function () {
 
     }
 
-    let boardHasRemainingSpaces = false;
+    //Code to alternatively check for a draw / case of no winner
 
-    for (let i = 1; i <= 9; i++) {
-      if ($(`#${i}`).text() === '') {
+    let boardHasRemainingSpaces = false; // variable to detect if the board still has empty cells
+
+    //loop through each cell - at each looop, boardHasRemainingSpaces is turned to true.Because variable starts as false, if it loops through and there are no empty spaces, boardHasRemainingSpaces will stay false once the loop finishes (NB the checkWinner function runs at every cell click)
+    for ( let i = 1; i <= 9; i ++ ) {
+      if ( $( `#${ i }` ).text() === '') {
         boardHasRemainingSpaces = true;
       }
     }
 
+    //if the boardHasRemainingSpaces variable is still false, and the game isn't already over, iniitialise the relevant functions to end the game and clear the board. Checking for gameOve here prevents cats game from resulting if the board is full but there is a winner in the final cell because the above code changes gameOver to true and this doesn't execute.
     if (boardHasRemainingSpaces === false && gameOver === false) {
 
       gameOver = true;
-      $('#cats-game').removeClass('invisible');
-      $('#cats-game').addClass('cats-game-over');
-      $('#play-again').removeClass('invisible');
+      $(' #cats-game' ).removeClass( 'invisible' );
+      $( '#cats-game' ).addClass(' cats-game-over' );
+      $( '#play-again' ).removeClass( 'invisible' );
       gameOver = true;
-      $('.play-again').on('click',clearBoard);
-
+      $( '.play-again' ).on( 'click' , clearBoard );
+      $( '#cursor-symbol' ).addClass( 'invisible' );
     }
 
   }
@@ -137,25 +143,25 @@ $(document).ready(function () {
     gameOver = true;
 
     //remove the cursor symbol from view (until board is cleared)
-    $('#cursor-symbol').addClass('invisible');
+    $( '#cursor-symbol' ).addClass( 'invisible' );
 
     //show the winner banner
-    $('#winner-banner').addClass('banner-over');
+    $( '#winner-banner' ).addClass( 'banner-over' );
 
     //show the play again button
-    $('#play-again').removeClass('invisible');
+    $( '#play-again' ).removeClass( 'invisible' );
 
     //see if the player's symbol matches the text in the currentPlayerSymbol variable at the time of winning - if they match, then that player won.
-    if($('#player1-symbol-display').text() === currentPlayerSymbol) {
-      $('.name-winner').text('Player 1') //add text to the name winner span displayed on banner
-      $('#player1-score').text(player1Score += 1); // display player's new score
-    } else if ($('#player2-symbol-display').text() === currentPlayerSymbol) {
-      $('.name-winner').text('Player 2');
-      $('#player2-score').text(player2Score += 1);
+    if($( '#player1-symbol-display' ).text() === currentPlayerSymbol ) {
+      $( '.name-winner' ).text( 'Player 1' ) //add text to the name winner span displayed on banner
+      $( '#player1-score' ).text( player1Score += 1 ); // display player's new score
+    } else if ($( '#player2-symbol-display' ).text() === currentPlayerSymbol ) {
+      $( '.name-winner' ).text( 'Player 2' );
+      $( '#player2-score' ).text( player2Score += 1 );
     }
 
     //once the play again button is clicked, clear the board
-    $('.play-again').on('click',clearBoard);
+    $( '.play-again' ).on( 'click', clearBoard );
 
   }
 
@@ -163,26 +169,26 @@ $(document).ready(function () {
   const clearBoard = function () {
 
     // Loop to remove the text in each table cell
-    for( let i = 1; i <= 9; i++) {
-      $(`#${i}`).text('');
+    for( let i = 1; i <= 9; i ++ ) {
+      $( `#${ i }` ).text( '' );
     }
 
     //re-set the gameOver variable to false so that game play can start (NB on click event for each table cell in main playGame function can only run if gameOver is false)
     gameOver = false;
 
     //if there was a winner, remove the winner banner from view
-    $('#winner-banner').removeClass('banner-over');
-    $('#winner-banner').addClass('invisible');
+    $( '#winner-banner' ).removeClass( 'banner-over' );
+    $( '#winner-banner' ).addClass( 'invisible' );
 
     //if it was a draw, remove the cats game nbanner from view.
-    $('#cats-game').removeClass('cats-game-over');
-    $('#cats-game').addClass('invisible');
+    $( '#cats-game' ).removeClass( 'cats-game-over' );
+    $( '#cats-game' ).addClass( 'invisible' );
 
     //remove the play again button from view because clicking it is what calls this clearBoard function so we don't need it until the game ends again (set in the ifWinnerCalls function)
-    $('#play-again').addClass('invisible');
+    $( '#play-again' ).addClass( 'invisible' );
 
     //show the cursor symbol again so you can see who starts the next game.
-    $('#cursor-symbol').removeClass('invisible');
+    $( '#cursor-symbol' ).removeClass( 'invisible' );
 
   }
 
@@ -190,20 +196,20 @@ $(document).ready(function () {
   const playGame = function () {
 
     //call assign symbol function to set player symbols once either button is clicked
-    $('#x-button').on('click', assignSymbol);
-    $('#o-button').on('click', assignSymbol);
+    $( '#x-button' ).on( 'click' , assignSymbol );
+    $( '#o-button' ).on( 'click' , assignSymbol );
 
 
     //attach event listener to each cell
-    for( let i = 1; i <= 9; i++) {
+    for( let i = 1; i <= 9; i ++ ) {
 
       //anonymous function run on each click of a cell - only runs if the cell is empty and the game isn't over yet (gameOver variable === false)
-      $(`#${i}`).on('click', function (){
+      $( `#${ i }` ).on( 'click' , function () {
 
-        if($(this).text() === '' && !gameOver) {
+        if( $( this ).text() === '' && !gameOver ) {
 
           // change text in chosen / clicked cell to whatever is in currentPlayerSymbol global variable
-          $(this).text(currentPlayerSymbol);
+          $( this ).text( currentPlayerSymbol );
 
           //check if there is a winner as a result of that click
           checkWinner();
